@@ -63,9 +63,9 @@ const HomeScreen = () => {
           console.log("ImagePicker Error: ", response.error);
         } else {
           setSelectedImage(response.uri);
-          navigation.navigate(Routes.DETAILS_SCREEN, {
-            selectedImage: response.uri,
-          });
+          // navigation.navigate(Routes.DETAILS_SCREEN, {
+          //   selectedImage: response.uri,
+          // });
         }
       } catch (error) {
         console.error("Error setting selectedImage:", error);
