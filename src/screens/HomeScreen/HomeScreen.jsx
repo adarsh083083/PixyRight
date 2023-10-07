@@ -5,17 +5,116 @@ import {
   Image,
   StatusBar,
 } from "react-native";
-import React from "react";
+import React, { useState, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { IMAGE } from "../../constants/Images";
 import CustomHeader from "../../components/HeaderAtom/HeaderAtom";
 import BackgroundImage from "../../components/BackgroundImage/ScreenBackground";
 import { Routes } from "../../constants/routes";
 import { styles } from "./HomeScreenStyle";
+import * as ImagePicker from "react-native-image-picker";
+import ActionSheet from "react-native-actionsheet";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const actionSheetRef = useRef(null);
+  const subActionSheetRef = useRef(null);
+  console.log(
+    "Navigating to DetailsScreen with selectedImage: ",
+    selectedImage
+  );
+  const showActionSheet = () => {
+    actionSheetRef.current.show();
+  };
 
+  const handleActionSheetPress = (index) => {
+    if (index === 0) {
+      showSubActionSheet();
+    } else if (index === 1) {
+      launchVideoLibrary();
+    }
+  };
+  const handleSubActionSheetPress = (index) => {
+    if (index === 0) {
+      launchCamera();
+    } else if (index === 1) {
+      launchImageLibrary();
+    }
+  };
+
+  const showSubActionSheet = () => {
+    subActionSheetRef.current.show();
+  };
+  const launchCamera = () => {
+    const options = {
+      title: "Select Image from Camera",
+      storageOptions: {
+        skipBackup: true,
+        path: "images",
+      },
+    };
+    ImagePicker.launchCamera(options, (response) => {
+      try {
+        if (response.didCancel) {
+          console.log("User cancelled image picker");
+        } else if (response.error) {
+          console.log("ImagePicker Error: ", response.error);
+        } else {
+          setSelectedImage(response.uri);
+          // navigation.navigate(Routes.DETAILS_SCREEN, {
+          //   selectedImage: response.uri,
+          // });
+        }
+      } catch (error) {
+        console.error("Error setting selectedImage:", error);
+      }
+    });
+  };
+
+  const launchImageLibrary = () => {
+    const options = {
+      title: "Select Image from Gallery",
+      storageOptions: {
+        skipBackup: true,
+        path: "images",
+      },
+    };
+
+    ImagePicker.launchImageLibrary(options, (response) => {
+      if (response.didCancel) {
+        console.log("User cancelled image picker");
+      } else if (response.error) {
+        console.log("ImagePicker Error: ", response.error);
+      } else {
+        setSelectedImage(response.uri);
+        navigation.navigate(Routes.DETAILS_SCREEN, {
+          selectedImage: response.uri,
+        });
+      }
+    });
+  };
+
+  const launchVideoLibrary = () => {
+    const options = {
+      mediaType: "video",
+      title: "Select Video from Gallery",
+      storageOptions: {
+        skipBackup: true,
+        path: "videos",
+      },
+    };
+    ImagePicker.launchImageLibrary(options, (response) => {
+      if (response.didCancel) {
+        console.log("User cancelled video picker");
+      } else if (response.error) {
+        console.log("ImagePicker Error: ", response.error);
+      } else {
+        setSelectedVideo(response.uri);
+      }
+    });
+  };
   return (
     <BackgroundImage source={IMAGE.BLACK_IMAGE}>
       <StatusBar
@@ -81,11 +180,25 @@ const HomeScreen = () => {
         <TouchableHighlight
           underlayColor="transparent"
           style={styles.imageBackground}
-          onPress={() => Alert.alert("camera will open sooon")}
+          onPress={() => showActionSheet()}
         >
           <Image style={styles.cameraStyle} source={IMAGE.CAMERA} />
         </TouchableHighlight>
       </View>
+      <ActionSheet
+        ref={actionSheetRef}
+        title={"Select Media Type"}
+        message={"What type of item you want to edit ?"}
+        options={["Photo", "Video", "Cancel"]}
+        cancelButtonIndex={2}
+        onPress={handleActionSheetPress}
+      />
+      <ActionSheet
+        ref={subActionSheetRef}
+        options={["Take Photo", "Photo Library", "Cancel"]}
+        cancelButtonIndex={2}
+        onPress={handleSubActionSheetPress}
+      />
     </BackgroundImage>
   );
 };
