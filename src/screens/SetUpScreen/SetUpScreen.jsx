@@ -10,14 +10,14 @@ import { Branding, Business, InputData, Logo } from "../../constants/inputData";
 
 const Section = ({ title, data }) => {
   return (
-    <View style={{paddingBottom:20 }}>
+    <View style={{ paddingBottom: 20 }}>
       <Text
         style={{
           color: "white",
           textAlign: "center",
           fontSize: 22,
           fontWeight: "bold",
-          marginTop:10
+          marginTop: 10,
         }}
       >
         {title}
