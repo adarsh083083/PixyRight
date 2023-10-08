@@ -14,7 +14,8 @@ import { Routes } from "../../constants/routes";
 import { styles } from "./HomeScreenStyle";
 import * as ImagePicker from "react-native-image-picker";
 import ActionSheet from "react-native-actionsheet";
-
+import Share from "react-native-share";
+import { shareData } from "../../constants/listData";
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [selectedImage, setSelectedImage] = useState(null);
@@ -72,7 +73,17 @@ const HomeScreen = () => {
       }
     });
   };
-
+  const handleShare = () => {
+    const options = {
+      message:
+        "Hi, checkout this app called PixyRight. It's a great watermarking app",
+      email: "info.pixyright@gmail.com",
+      subject: "I have an idea! PixyRight",
+    };
+    Share.open(options)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   const launchImageLibrary = () => {
     const options = {
       title: "Select Image from Gallery",
@@ -156,7 +167,7 @@ const HomeScreen = () => {
         <TouchableHighlight
           underlayColor="transparent"
           style={styles.imageBackground}
-          onPress={() => navigation.navigate(Routes.INVITE_SCREEN)}
+          onPress={() => handleShare()}
         >
           <Image
             resizeMode="cover"
