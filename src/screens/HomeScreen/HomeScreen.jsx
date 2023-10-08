@@ -16,12 +16,18 @@ import * as ImagePicker from "react-native-image-picker";
 import ActionSheet from "react-native-actionsheet";
 import Share from "react-native-share";
 import { shareData } from "../../constants/listData";
+import IdeaScreen from "../IdeasScreen/IdeaScreen";
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const actionSheetRef = useRef(null);
   const subActionSheetRef = useRef(null);
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
+
+  const toggleBottomSheet = () => {
+    setIsBottomSheetVisible(!isBottomSheetVisible);
+  };
   console.log(
     "Navigating to DetailsScreen with selectedImage: ",
     selectedImage
@@ -178,7 +184,7 @@ const HomeScreen = () => {
         <TouchableHighlight
           underlayColor="transparent"
           style={styles.imageBackground}
-          onPress={() => navigation.navigate(Routes.IDEAS_SCREEN)}
+          onPress={toggleBottomSheet}
         >
           <Image
             resizeMode="cover"
@@ -209,6 +215,10 @@ const HomeScreen = () => {
         options={["Take Photo", "Photo Library", "Cancel"]}
         cancelButtonIndex={2}
         onPress={handleSubActionSheetPress}
+      />
+      <IdeaScreen
+        isVisible={isBottomSheetVisible}
+        toggleBottomSheet={toggleBottomSheet}
       />
     </BackgroundImage>
   );
