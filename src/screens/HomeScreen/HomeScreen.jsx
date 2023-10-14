@@ -116,6 +116,18 @@ const HomeScreen = () => {
       }
     });
   };
+
+  const handleShare = () => {
+    const options = {
+      message:
+        "Hi, checkout this app called PixyRight. It's a great watermarking app",
+      email: "info.pixyright@gmail.com",
+      subject: "I have an idea! PixyRight",
+    };
+    Share.open(options)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   
   return (
     <BackgroundImage source={IMAGE.BLACK_IMAGE}>
