@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { CHANGE_BY_MOBILE_DPI } from "../../constants/Constant";
 
 export const styles = StyleSheet.create({
   container: {
@@ -6,40 +7,41 @@ export const styles = StyleSheet.create({
   },
   firstContainer: {
     flexDirection: "row",
-    marginTop: 120,
+    marginTop: CHANGE_BY_MOBILE_DPI(110),
     justifyContent: "space-around",
   },
   headerStyle: {
     marginTop: 30,
   },
   setupStyle: {
-    height: 270,
-    width: 180,
+    height: CHANGE_BY_MOBILE_DPI(250),
+    width: CHANGE_BY_MOBILE_DPI(185),
   },
   paymetStyle: {
-    height: 270,
-    width: 180,
+    height: CHANGE_BY_MOBILE_DPI(250),
+    width: CHANGE_BY_MOBILE_DPI(185),
   },
   secondContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
   },
   inviteStyle: {
-    height: 270,
-    width: 180,
+    height: CHANGE_BY_MOBILE_DPI(250),
+    width: CHANGE_BY_MOBILE_DPI(185),
   },
   ideasStyle: {
-    height: 270,
-    width: 180,
+    height: CHANGE_BY_MOBILE_DPI(250),
+    width: CHANGE_BY_MOBILE_DPI(185),
   },
   cameraContainer: {
     position: "absolute",
-    top: 365,
-    right: 82,
+    top: CHANGE_BY_MOBILE_DPI(344),
+    alignSelf: "center",
   },
   cameraStyle: {
-    height: 220,
-    width: 220,
+    height: CHANGE_BY_MOBILE_DPI(210),
+    width: CHANGE_BY_MOBILE_DPI(210),
   },
   imageBackground: {
     backgroundColor: "transparent",

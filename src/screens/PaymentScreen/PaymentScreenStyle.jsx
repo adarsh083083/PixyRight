@@ -1,38 +1,39 @@
 import { StyleSheet } from "react-native";
+import { CHANGE_BY_MOBILE_DPI } from "../../constants/Constant";
 const styles = StyleSheet.create({
   headerStyle: {
-    marginTop: 30,
+    marginTop: CHANGE_BY_MOBILE_DPI(30),
   },
   textContainer: {
-    marginTop: 50,
+    marginTop: CHANGE_BY_MOBILE_DPI(50),
     justifyContent: "center",
     alignItems: "center",
   },
   titleStyle: {
     color: "white",
-    fontSize: 30,
+    fontSize: CHANGE_BY_MOBILE_DPI(28),
     fontWeight: "bold",
     textAlign: "center",
   },
   textStyle1: {
     color: "white",
-    fontSize: 22,
+    fontSize: CHANGE_BY_MOBILE_DPI(20),
     fontWeight: "400",
     textAlign: "center",
-    marginTop: 10,
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
   },
   textStyle2: {
     color: "white",
-    fontSize: 22,
+    fontSize: CHANGE_BY_MOBILE_DPI(20),
     fontWeight: "bold",
     textAlign: "center",
     // maxWidth: 350,
   },
   btnStyle: {
-    marginTop: 60,
+    marginTop: CHANGE_BY_MOBILE_DPI(60),
   },
   btnStyle2: {
-    marginTop: 10,
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
   },
 });
 export default styles;

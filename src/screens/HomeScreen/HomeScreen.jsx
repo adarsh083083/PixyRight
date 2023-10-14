@@ -1,10 +1,4 @@
-import {
-  View,
-  TouchableHighlight,
-  Alert,
-  Image,
-  StatusBar,
-} from "react-native";
+import { View, TouchableHighlight, Image, StatusBar } from "react-native";
 import React, { useState, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { IMAGE } from "../../constants/Images";
@@ -15,7 +9,6 @@ import { styles } from "./HomeScreenStyle";
 import * as ImagePicker from "react-native-image-picker";
 import ActionSheet from "react-native-actionsheet";
 import Share from "react-native-share";
-import { shareData } from "../../constants/listData";
 import IdeaScreen from "../IdeasScreen/IdeaScreen";
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -54,6 +47,7 @@ const HomeScreen = () => {
   const showSubActionSheet = () => {
     subActionSheetRef.current.show();
   };
+
   const launchCamera = () => {
     const options = {
       title: "Select Image from Camera",
@@ -65,54 +59,43 @@ const HomeScreen = () => {
     ImagePicker.launchCamera(options, (response) => {
       try {
         if (response.didCancel) {
-          console.log("User cancelled image picker");
+          console.log("User cancelled image picker (Camera)");
         } else if (response.error) {
-          console.log("ImagePicker Error: ", response.error);
+          console.log("ImagePicker Error (Camera):", response.error);
         } else {
           setSelectedImage(response.uri);
-          // navigation.navigate(Routes.DETAILS_SCREEN, {
-          //   selectedImage: response.uri,
-          // });
+          console.log("Selected Image (Camera):", response); // Log the selected image
         }
       } catch (error) {
-        console.error("Error setting selectedImage:", error);
+        console.error("Error setting selectedImage (Camera):", error);
       }
     });
   };
-  const handleShare = () => {
-    const options = {
-      message:
-        "Hi, checkout this app called PixyRight. It's a great watermarking app",
-      email: "info.pixyright@gmail.com",
-      subject: "I have an idea! PixyRight",
-    };
-    Share.open(options)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+  
   const launchImageLibrary = () => {
     const options = {
       title: "Select Image from Gallery",
       storageOptions: {
         skipBackup: true,
         path: "images",
-      },
+      }
     };
-
+  
     ImagePicker.launchImageLibrary(options, (response) => {
       if (response.didCancel) {
-        console.log("User cancelled image picker");
+        console.log("User cancelled image picker (Gallery)");
       } else if (response.error) {
-        console.log("ImagePicker Error: ", response.error);
+        console.log("ImagePicker Error (Gallery):", response.error);
       } else {
         setSelectedImage(response.uri);
+        console.log("Selected Image (Gallery):", response); // Log the selected image
         navigation.navigate(Routes.DETAILS_SCREEN, {
           selectedImage: response.uri,
         });
       }
     });
   };
-
+  
   const launchVideoLibrary = () => {
     const options = {
       mediaType: "video",
@@ -120,18 +103,20 @@ const HomeScreen = () => {
       storageOptions: {
         skipBackup: true,
         path: "videos",
-      },
+      }
     };
     ImagePicker.launchImageLibrary(options, (response) => {
       if (response.didCancel) {
         console.log("User cancelled video picker");
       } else if (response.error) {
-        console.log("ImagePicker Error: ", response.error);
+        console.log("ImagePicker Error (Video):", response.error);
       } else {
         setSelectedVideo(response.uri);
+        console.log("Selected Video:", response?.originalPath); // Log the selected video
       }
     });
   };
+  
   return (
     <BackgroundImage source={IMAGE.BLACK_IMAGE}>
       <StatusBar
