@@ -7,21 +7,12 @@ import CustomHeader from "../../components/HeaderAtom/HeaderAtom";
 import InputItemData from "./InputItemData";
 import { IMAGE } from "../../constants/Images";
 import { Branding, Business, InputData, Logo } from "../../constants/inputData";
+import { styles } from "./SetUpScreenStyle";
 
 const Section = ({ title, data }) => {
   return (
-    <View style={{ paddingBottom: 20 }}>
-      <Text
-        style={{
-          color: "white",
-          textAlign: "center",
-          fontSize: 22,
-          fontWeight: "bold",
-          marginTop: 10,
-        }}
-      >
-        {title}
-      </Text>
+    <View style={styles.sectionContainer}>
+      <Text style={styles.sectionTitle}>{title}</Text>
       <FlatList
         data={data}
         renderItem={({ item }) => <InputItemData item={item} />}

@@ -6,7 +6,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   DetailsScreen,
   HomeScreen,
-  InviteScreen,
   PaymentScreen,
   SetUpScreen,
 } from "../screens";
@@ -27,9 +26,7 @@ function AppNavigation() {
         <Stack.Screen name={Routes.SETUP_SCREEN} component={SetUpScreen} />
         <Stack.Screen name={Routes.PAYMENT_SCREEN} component={PaymentScreen} />
         <Stack.Screen name={Routes.IDEAS_SCREEN} component={IdeaScreen} />
-        <Stack.Screen name={Routes.INVITE_SCREEN} component={InviteScreen} />
         <Stack.Screen name={Routes.DETAILS_SCREEN} component={DetailsScreen} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
