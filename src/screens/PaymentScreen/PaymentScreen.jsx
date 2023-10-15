@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, StyleSheet } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import React from "react";
 import BackgroundImage from "../../components/BackgroundImage/ScreenBackground";
 import { IMAGE } from "../../constants/Images";

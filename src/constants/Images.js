@@ -28,4 +28,5 @@ export const IMAGE = {
   BY: require("../assets/Images/by.png"),
   AMAZON: require("../assets/Images/amazon.png"),
   PRINT: require("../assets/Images/print.png"),
+  LOGO: require("../assets/Images/logo.png"),
 };

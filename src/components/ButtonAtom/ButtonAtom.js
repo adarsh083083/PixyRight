@@ -5,7 +5,7 @@ const ButtonAtom = ({
   btnText,
   btnStyle = {},
   onPress = () => {},
-  img,
+  disabled,
   btnTextStyle = {},
 }) => {
   return (
@@ -13,6 +13,7 @@ const ButtonAtom = ({
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={onPress}
+        disabled={disabled}
         style={{ ...styles.btnStyle, ...btnStyle }}
       >
         <Text style={{ ...styles.btnTextStyle, ...btnTextStyle }}>

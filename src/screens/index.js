@@ -1,5 +1,9 @@
+export { default as SplashScreen } from "../screens/Splash/SplashScreen";
 export { default as HomeScreen } from "../screens/HomeScreen/HomeScreen";
 export { default as IdeasScreen } from "../screens/IdeasScreen/IdeaScreen";
 export { default as PaymentScreen } from "../screens/PaymentScreen/PaymentScreen";
 export { default as SetUpScreen } from "../screens/SetUpScreen/SetUpScreen";
 export { default as DetailsScreen } from "../screens/DetailsScreen/DetailsScreen";
+export { default as TermsOfServiceScreen } from "../screens/TermsOfService/TermsOfServiceScreen";
+export { default as PrivacyPolicyScreen } from "../screens/PrivacyPolicy/PrivacyPolicy";
+export { default as MainScreen } from "../screens/MainScreen/MainScreen";
