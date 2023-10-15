@@ -9,7 +9,8 @@ import { styles } from "./DetailsStyles";
 const DetailsScreen = () => {
   const route = useRoute();
   const selectedImage = route?.params?.selectedImage;
-  console.log(selectedImage, ".........selectedImageee");
+  const cameraImage = route?.params?.cameraImage;
+  console.log(selectedImage, ".......details screens selectedImage");
   return (
     <BackgroundImage source={IMAGE.BLACK_IMAGE}>
       <StatusBar
@@ -21,6 +22,13 @@ const DetailsScreen = () => {
       />
       <View style={styles.headerStyle}>
         <CustomHeader title={"PIXY RIGHT"} />
+
+        {selectedImage && (
+          <Image source={{ uri: selectedImage }} style={styles.imageStyle} />
+        )}
+        {cameraImage && (
+          <Image source={{ uri: cameraImage }} style={styles.imageStyle} />
+        )}
       </View>
     </BackgroundImage>
   );

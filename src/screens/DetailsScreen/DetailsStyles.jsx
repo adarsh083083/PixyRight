@@ -45,4 +45,8 @@ export const styles = StyleSheet.create({
   imageBackground: {
     backgroundColor: "transparent",
   },
+  imageStyle: {
+    width: CHANGE_BY_MOBILE_DPI(200),
+    height: CHANGE_BY_MOBILE_DPI(200),
+  },
 });

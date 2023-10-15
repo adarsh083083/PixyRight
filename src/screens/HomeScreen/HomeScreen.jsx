@@ -71,16 +71,16 @@ const HomeScreen = () => {
       }
     });
   };
-  
+
   const launchImageLibrary = () => {
     const options = {
       title: "Select Image from Gallery",
       storageOptions: {
         skipBackup: true,
         path: "images",
-      }
+      },
     };
-  
+
     ImagePicker.launchImageLibrary(options, (response) => {
       if (response.didCancel) {
         console.log("User cancelled image picker (Gallery)");
@@ -95,7 +95,7 @@ const HomeScreen = () => {
       }
     });
   };
-  
+
   const launchVideoLibrary = () => {
     const options = {
       mediaType: "video",
@@ -103,7 +103,7 @@ const HomeScreen = () => {
       storageOptions: {
         skipBackup: true,
         path: "videos",
-      }
+      },
     };
     ImagePicker.launchImageLibrary(options, (response) => {
       if (response.didCancel) {
@@ -128,7 +128,7 @@ const HomeScreen = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
-  
+
   return (
     <BackgroundImage source={IMAGE.BLACK_IMAGE}>
       <StatusBar
