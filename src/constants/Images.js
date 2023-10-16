@@ -27,6 +27,11 @@ export const IMAGE = {
   BROWSER: require("../assets/Images/browser.png"),
   BY: require("../assets/Images/by.png"),
   AMAZON: require("../assets/Images/amazon.png"),
+  MORE: require("../assets/Images/more.png"),
+  COLOR_PICKER: require("../assets/Images/bucket.png"),
+  SHADOW: require("../assets/Images/stop.png"),
+  FONTS_T: require("../assets/Images/fonts.png"),
+  OPACITY_SKY: require("../assets/Images/contrast.png"),
   PRINT: require("../assets/Images/print.png"),
   LOGO: require("../assets/Images/logo.png"),
 };

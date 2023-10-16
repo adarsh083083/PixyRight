@@ -63,8 +63,13 @@ const HomeScreen = () => {
         } else if (response.error) {
           console.log("ImagePicker Error (Camera):", response.error);
         } else {
-          setSelectedImage(response.uri);
-          console.log("Selected Image (Camera):", response); // Log the selected image
+          setSelectedImage(response.assets[0].uri);
+          console.log("Selected Image (Camera):", response.assets[0].uri); // Log the selected image
+          if (response.assets[0].uri) {
+            navigation.navigate(Routes.DETAILS_SCREEN, {
+              selectedImage: response.assets[0].uri,
+            });
+          }
         }
       } catch (error) {
         console.error("Error setting selectedImage (Camera):", error);
@@ -87,11 +92,13 @@ const HomeScreen = () => {
       } else if (response.error) {
         console.log("ImagePicker Error (Gallery):", response.error);
       } else {
-        setSelectedImage(response.uri);
+        setSelectedImage(response.assets[0].uri);
         console.log("Selected Image (Gallery):", response); // Log the selected image
-        navigation.navigate(Routes.DETAILS_SCREEN, {
-          selectedImage: response.uri,
-        });
+        if (response.assets[0].uri) {
+          navigation.navigate(Routes.DETAILS_SCREEN, {
+            selectedImage: response.assets[0].uri,
+          });
+        }
       }
     });
   };
