@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StatusBar } from "react-native";
+import { View, Text, ScrollView, StatusBar, Dimensions } from "react-native";
 import { CHANGE_BY_MOBILE_DPI } from "../../constants/Constant";
 import BackgroundImage from "../../components/BackgroundImage/ScreenBackground";
 import { IMAGE } from "../../constants/Images";
 import styles from "./styles";
+import ButtonAtom from "../../components/ButtonAtom/ButtonAtom";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   const paddingToBottom = 20;
@@ -13,9 +15,15 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   );
 };
 
-const PrivacyPolicy = () => {
+const PrivacyPolicy = ({navigation}) => {
   const [accepted, setAccepted] = useState(false);
-
+  const handleAccept = async ({}) => {
+    await AsyncStorage.setItem("termsAccepted", "true");
+    await AsyncStorage.setItem("privacyPolicyAccepted", "true");
+  
+    navigation.navigate("HomeScreen");
+  };
+  
   return (
     <BackgroundImage source={IMAGE.BLACK_IMAGE}>
       <StatusBar
@@ -357,6 +365,22 @@ const PrivacyPolicy = () => {
                 </Text>
               </ScrollView>
             </View>
+          </View>
+          <View
+            style={{
+              marginBottom: CHANGE_BY_MOBILE_DPI(18),
+              width: Dimensions.get("window").width,
+            }}
+          >
+            <ButtonAtom
+              btnStyle={{
+                width:
+                  Dimensions.get("window").width - CHANGE_BY_MOBILE_DPI(30),
+              }}
+              disabled={!accepted}
+              onPress={handleAccept}
+              btnText={"I ACCEPT AND CONTINUE"}
+            />
           </View>
         </View>
       </View>

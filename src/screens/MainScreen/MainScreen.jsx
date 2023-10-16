@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Routes } from "../../constants/routes";
@@ -8,21 +7,19 @@ import PrivacyPolicy from "../PrivacyPolicy/PrivacyPolicy";
 import { StatusBar, View } from "react-native";
 import BackgroundImage from "../../components/BackgroundImage/ScreenBackground";
 import { IMAGE } from "../../constants/Images";
-import { CHANGE_BY_MOBILE_DPI } from "../../constants/Constant";
 import styles from "../Splash/styles";
 import CustomHeader from "../../components/HeaderAtom/HeaderAtom";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import ButtonAtom from "../../components/ButtonAtom/ButtonAtom";
 import HomeScreen from "../HomeScreen/HomeScreen";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 function MainScreen() {
+  const [accepted, setAccepted] = React.useState(false);
   const [hasAcceptedTerms, setHasAcceptedTerms] = React.useState(false);
   const [hasAcceptedPrivacyPolicy, setHasAcceptedPrivacyPolicy] =
     React.useState(false);
-  const navigation = useNavigation();
 
   React.useEffect(() => {
     AsyncStorage.getItem("termsAccepted").then((value) => {
@@ -37,13 +34,6 @@ function MainScreen() {
       }
     });
   }, []);
-
-  const handleAccept = async () => {
-    await AsyncStorage.setItem("termsAccepted", "true");
-    await AsyncStorage.setItem("privacyPolicyAccepted", "true");
-
-    navigation.navigate("HomeScreen");
-  };
 
   if (!hasAcceptedTerms || !hasAcceptedPrivacyPolicy) {
     return (
@@ -96,13 +86,6 @@ function MainScreen() {
               }}
             />
           </Tab.Navigator>
-
-          <View style={{ marginBottom: CHANGE_BY_MOBILE_DPI(18) }}>
-            <ButtonAtom
-              onPress={handleAccept}
-              btnText={"I ACCEPT AND CONTINUE"}
-            />
-          </View>
         </View>
       </BackgroundImage>
     );
