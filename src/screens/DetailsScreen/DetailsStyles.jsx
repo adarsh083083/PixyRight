@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { CHANGE_BY_MOBILE_DPI } from "../../constants/Constant";
 
 export const styles = StyleSheet.create({
   container: {
@@ -20,7 +21,7 @@ export const styles = StyleSheet.create({
   zoomHintContainer: {
     borderColor: "white",
     width: "90%",
-    height: 50,
+    height: "95%",
     borderWidth: 1,
     borderRadius: 10,
     backgroundColor: "black",
@@ -62,10 +63,10 @@ export const styles = StyleSheet.create({
     height: 40,
     width: 40,
   },
-  imageStyle: {
-    width: CHANGE_BY_MOBILE_DPI(200),
-    height: CHANGE_BY_MOBILE_DPI(200),
-  },
+  // imageStyle: {
+  //   width: CHANGE_BY_MOBILE_DPI(20),
+  //   height: CHANGE_BY_MOBILE_DPI(20),
+  // },
 });
 
 export default styles;
