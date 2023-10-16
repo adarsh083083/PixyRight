@@ -32,7 +32,9 @@ com.pixright.app-mergeDebugResources-30 /home/santophy/Documents/PixyRight/andro
 com.pixright.app-merged_res-31 /home/santophy/Documents/PixyRight/android/app/build/intermediates/merged_res/debug
 com.pixright.app-debug-32 /home/santophy/Documents/PixyRight/android/app/src/debug/res
 com.pixright.app-main-33 /home/santophy/Documents/PixyRight/android/app/src/main/res
-com.pixright.app-packaged_res-34 /home/santophy/Documents/PixyRight/node_modules/react-native-image-picker/android/build/intermediates/packaged_res/debug
-com.pixright.app-packaged_res-35 /home/santophy/Documents/PixyRight/node_modules/react-native-safe-area-context/android/build/intermediates/packaged_res/debug
-com.pixright.app-packaged_res-36 /home/santophy/Documents/PixyRight/node_modules/react-native-screens/android/build/intermediates/packaged_res/debug
-com.pixright.app-packaged_res-37 /home/santophy/Documents/PixyRight/node_modules/react-native-share/android/build/intermediates/packaged_res/debug
+com.pixright.app-packaged_res-34 /home/santophy/Documents/PixyRight/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/packaged_res/debug
+com.pixright.app-packaged_res-35 /home/santophy/Documents/PixyRight/node_modules/react-native-image-picker/android/build/intermediates/packaged_res/debug
+com.pixright.app-packaged_res-36 /home/santophy/Documents/PixyRight/node_modules/react-native-pager-view/android/build/intermediates/packaged_res/debug
+com.pixright.app-packaged_res-37 /home/santophy/Documents/PixyRight/node_modules/react-native-safe-area-context/android/build/intermediates/packaged_res/debug
+com.pixright.app-packaged_res-38 /home/santophy/Documents/PixyRight/node_modules/react-native-screens/android/build/intermediates/packaged_res/debug
+com.pixright.app-packaged_res-39 /home/santophy/Documents/PixyRight/node_modules/react-native-share/android/build/intermediates/packaged_res/debug

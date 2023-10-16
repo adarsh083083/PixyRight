@@ -62,6 +62,10 @@ export const styles = StyleSheet.create({
     height: 40,
     width: 40,
   },
+  imageStyle: {
+    width: CHANGE_BY_MOBILE_DPI(200),
+    height: CHANGE_BY_MOBILE_DPI(200),
+  },
 });
 
 export default styles;

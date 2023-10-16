@@ -42,7 +42,7 @@ const SetUpScreen = () => {
           onBackPress={() => navigation.goBack()}
         />
       </View>
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
         <Section title="SOCIAL" data={InputData} />
         <Section title="LOGO" data={Logo} />
         <Section title="BUSINESS" data={Business} />
