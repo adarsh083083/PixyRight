@@ -42,7 +42,7 @@
 //                 backgroundColor: "skyblue",
 //                 justifyContent: "center",
 //                 alignItems: "center",
-//                 marginLeft: 5,
+//                 marginLeft: 5,   
 //               }}
 //             >
 //               <Image style={{ height: 15, width: 15 }} source={IMAGE.UPARROW} />
