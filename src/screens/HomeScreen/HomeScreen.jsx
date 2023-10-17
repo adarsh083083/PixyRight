@@ -10,6 +10,8 @@ import * as ImagePicker from "react-native-image-picker";
 import ActionSheet from "react-native-actionsheet";
 import Share from "react-native-share";
 import IdeaScreen from "../IdeasScreen/IdeaScreen";
+import { check, request, PERMISSIONS, RESULTS } from "react-native-permissions";
+
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [selectedImage, setSelectedImage] = useState(null);
@@ -39,8 +41,39 @@ const HomeScreen = () => {
   const handleSubActionSheetPress = (index) => {
     if (index === 0) {
       launchCamera();
+      requestCameraPermission().then(() => launchCamera());
     } else if (index === 1) {
       launchImageLibrary();
+      requestPhotoLibraryPermission().then(() => launchImageLibrary());
+    }
+  };
+  // Function to request camera permission
+  const requestCameraPermission = async () => {
+    const cameraPermission =
+      Platform.OS === "ios"
+        ? PERMISSIONS.IOS.CAMERA
+        : PERMISSIONS.ANDROID.CAMERA;
+
+    const status = await check(cameraPermission);
+    if (status !== RESULTS.GRANTED) {
+      const result = await request(cameraPermission);
+      if (result !== RESULTS.GRANTED) {
+        console.warn("Camera permission denied.");
+      }
+    }
+  };
+  const requestPhotoLibraryPermission = async () => {
+    const photoLibraryPermission =
+      Platform.OS === "ios"
+        ? PERMISSIONS.IOS.PHOTO_LIBRARY
+        : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE;
+
+    const status = await check(photoLibraryPermission);
+    if (status !== RESULTS.GRANTED) {
+      const result = await request(photoLibraryPermission);
+      if (result !== RESULTS.GRANTED) {
+        console.warn("Photo library permission denied.");
+      }
     }
   };
 

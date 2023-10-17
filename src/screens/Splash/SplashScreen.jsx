@@ -1,7 +1,6 @@
-import { View, Text, Image, ImageBackground, StatusBar } from "react-native";
+import { View, Text, Image,  StatusBar } from "react-native";
 import React, { useEffect } from "react";
 import { IMAGE } from "../../constants/Images";
-import styles from "./styles";
 import BackgroundImage from "../../components/BackgroundImage/ScreenBackground";
 import { Routes } from "../../constants/routes";
 
