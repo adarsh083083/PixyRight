@@ -34,4 +34,5 @@ export const IMAGE = {
   OPACITY_SKY: require("../assets/Images/contrast.png"),
   PRINT: require("../assets/Images/print.png"),
   LOGO: require("../assets/Images/logo.png"),
+  SNAP: require("../assets/Images/snap.png"),
 };

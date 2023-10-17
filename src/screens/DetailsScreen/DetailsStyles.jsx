@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { CHANGE_BY_MOBILE_DPI } from "../../constants/Constant";
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,8 +16,9 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 10,
     justifyContent: "center",
+    marginTop: CHANGE_BY_MOBILE_DPI(20),
   },
-  imageStyle: { height: "95%", width: "100%" },
+  imageStyle: { height: "100%", width: "100%", borderRadius: 10 },
   zoomHintContainer: {
     borderColor: "white",
     width: "90%",
@@ -41,6 +43,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 1,
     marginTop: 10,
     alignItems: "center",
+    justifyContent: "center",
   },
   imageInnerContainer: {
     justifyContent: "center",
@@ -61,10 +64,6 @@ export const styles = StyleSheet.create({
   touchImage: {
     height: 40,
     width: 40,
-  },
-  imageStyle: {
-    width: CHANGE_BY_MOBILE_DPI(200),
-    height: CHANGE_BY_MOBILE_DPI(200),
   },
 });
 
